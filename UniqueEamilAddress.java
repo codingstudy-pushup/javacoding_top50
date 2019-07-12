@@ -26,7 +26,7 @@ public class UniqueEamilAddress {
 	}
 
 	private static String getLocalName(String email) {
-		String receivingEmail = "";
+		StringBuilder sb = new StringBuilder();
 		for (int i=0; i < email.length(); i++) {
 			if (email.charAt(i) == '.') {
 				continue;
@@ -37,9 +37,11 @@ public class UniqueEamilAddress {
 			if (email.charAt(i) == '@') {
 				break;
 			}
-			receivingEmail += email.charAt(i);
+			String str = String.valueOf(email.charAt(i));
+			sb.append(str);
+
 		}
-		return receivingEmail;
+		return sb.toString();
 	}
 	
 	
