@@ -4,7 +4,7 @@ import java.util.*;
 
 
 
-public class Maze_dfs {
+public class Maze2_dfs {
 
 	public static void main(String[] args) {
 		
@@ -17,7 +17,7 @@ public class Maze_dfs {
 		};
 		int [] start= {0,4};
 		int[] dest = {4,4};
-		Maze_dfs a= new Maze_dfs();
+		Maze2_dfs a= new Maze2_dfs();
 		System.out.println(a.shortestDistance(maze, start,dest ));
 	}
 	    int[][] dirs={{0,1}, {0,-1}, {-1,0}, {1,0}};
