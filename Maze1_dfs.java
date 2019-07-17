@@ -19,7 +19,7 @@ public class Maze1_dfs {
 		}
 	
 	
-		int[][] dirs = {{-1,0},{0,1},{1,0},{0,-1}};
+		int[][] dirs = {{-1,0},{1,0},{0,1},{0,-1}};
 		int m ,n;
 	    public boolean hasPath(int[][] maze, int[] start, int[] destination) {
 	        m = maze.length;
@@ -34,6 +34,7 @@ public class Maze1_dfs {
 	            return false;
 	        
 	        visited[start[0]][start[1]] = true;
+	        print(visited);
 	        if (start[0] == destination[0] && start[1] == destination[1]) 
 	            return true;
 	        
@@ -41,17 +42,34 @@ public class Maze1_dfs {
 	        for (int[] dir: dirs) {
 	                int x = start[0];
 	                int y = start[1];
+	                System.out.println("0===============  x: "+x+" y: "+y);
 	                while (x >= 0 && x < m && y >= 0 && y < n && maze[x][y] != 1) {
 	                    x += dir[0];
 	                    y += dir[1];
+	                System.out.println("1  x: "+x+" y: "+y);
+	            
 	                }
 	                x -= dir[0];
 	                y -= dir[1];
+	                System.out.println("2  x: "+x+" y: "+y);
 	                if (dfs(maze, new int[]{x, y}, destination, visited)) {
 	                    return true;
 	                }
+	                System.out.println();
 	          }
+
 	        return false;
+	    }
+	    private void print(boolean[][] visited) {
+	    	if(visited==null|| visited.length==0)return;
+	    	int m  = visited.length;
+	    	int n = visited[0].length;
+	    	for(int i=0; i<m; i++) {
+	    		for(int j=0; j<n; j++) {
+	    			System.out.print(visited[m][n]);
+	    		}
+	    		System.out.println();
+	    	}
 	    }
 	
 }
