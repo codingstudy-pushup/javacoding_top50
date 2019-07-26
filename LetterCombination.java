@@ -23,12 +23,12 @@ public class LetterCombi {
 		return result;
 	}
 
-	public List<String> combine(String digit, List<String> l) {
+	public List<String> combine(String digit, List<String> firstList) {
 		List<String> result = new ArrayList<String>();
 
 		for (int i = 0; i < digit.length(); i++)
-			for (String x : l)
-				result.add(x + digit.charAt(i));
+			for (String firstStr : firstList)
+				result.add(firstStr + digit.charAt(i));
 
 		return result;
 	}
