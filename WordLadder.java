@@ -1,4 +1,4 @@
-package top50
+package top50;
 
 import java.util.Arrays;
 import java.util.*;
@@ -29,10 +29,14 @@ public class WordLadder {
 	            System.out.println("================size "+size);
 	            for(int i=0;i<size;i++){
 	                String str = queue.poll();
-//	                System.out.println("=======str "+str);
-	                if(str.equals(endWord))return level;
+	                System.out.println("========================str "+str);
+	                if(str.equals(endWord)) {
+	                	 System.out.println("=======str "+str);
+	                	 System.out.println("=======endword "+endWord);
+	                	return level;
+	                }
 	                for(String neighbor : neighbors(str,wordList)){
-	                	System.out.println("neighbor "+neighbor);
+	                	 System.out.println("&&&&&&&&&&&&&&&&&&neighbors "+neighbor);
 	                    queue.offer(neighbor);
 	                }
 	            }
@@ -42,7 +46,7 @@ public class WordLadder {
 	    }
 	    
 	    public List<String> neighbors(String s, List<String> wordList){
-	     	 System.out.println("&&&&&&&&&&&&&&&&&&neighbors "+s);
+	     	
 	        List<String> res = new LinkedList<>();
 	        Set<String> dict = new HashSet<>(wordList);
 	        for(int i=0;i<s.length();i++){
@@ -52,8 +56,8 @@ public class WordLadder {
 	                String word = new String(chars);
 //	                System.out.println("word "+word);
 	                if(dict.remove(word)){
-	               	 System.out.println("&&&&&&&&&&&&&&&&&&word "+word);
-	                	 System.out.println("&&&&&&&&&&&&&&&&&&dict "+dict);
+//	               	 System.out.println("&&&&&&&&&&&&&&&&&&word "+word);
+//	                	 System.out.println("&&&&&&&&&&&&&&&&&&dict "+dict);
 	                
 	                    res.add(word);
 	                }
@@ -62,6 +66,14 @@ public class WordLadder {
 	        return res;
 	    }
 	    
+	
+
+	 
+	    
+
+	
+}
+
 	
 
 	 
