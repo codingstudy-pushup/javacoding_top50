@@ -1,4 +1,4 @@
-package top50;
+package zTest01;
 
 import java.util.*;
 
@@ -22,28 +22,34 @@ public class RemoveInvalidParentheses {
 	        queue.offer(s);
 	        visited.add(s);
 	        boolean found = false;
-	        while(!queue.isEmpty() && !found){
+	        while(!queue.isEmpty()){
 	            int size = queue.size();
+	            System.out.println("size "+size);
 	            for (int j = 0; j < size; j++){
 	                String curr = queue.poll();
 	                if (isValid(curr)){
 	                    res.add(curr);
 	                    found = true;
 	                }
-	                if (!found){
+	                if (found) continue;
+//	                if (!found){
 	                    for (int i = 0; i < curr.length(); i++){
-	                        char c = curr.charAt(i);
-	                        if (Character.isLetter(c)){
-	                            continue;
-	                        }
+//	                        char c = curr.charAt(i);
+//	                        if (Character.isLetter(c)){
+//	                            continue;
+//	                        }
+	                        if (curr.charAt(i) != '(' && curr.charAt(i) != ')') continue;
+	                        System.out.println("i:"+i+""+curr.substring(0, i)+" : "+curr.substring(i+1));
 	                        String str = curr.substring(0, i) + curr.substring(i+1);
+	                        System.out.println("str "+str);
 	                        if (!visited.contains(str)){
 	                            queue.offer(str);
 	                            visited.add(str);
 	                        }
 	                    }
-	                }
-	            }            
+//	                }
+	            }   
+	            System.out.println();
 	        }
 	        return res;
 	    }
