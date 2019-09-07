@@ -28,13 +28,13 @@ public class Maze2_bfs {
 
 		m = maze.length;
 		n = maze[0].length;
-	    // record shotest distance
+	   
 	    int[][] distance=new int[m][n];
-	    // Set all cell as -1
+	
 	    for(int[] a:distance){
 	        Arrays.fill(a,-1);
 	    }
-	    // Initialize start distance to 0
+	   
 	    distance[start[0]][start[1]]=0;
 	    Queue<int[]> q=new LinkedList<>();
 	    q.add(start);
@@ -49,8 +49,7 @@ public class Maze2_bfs {
 	                y+=dir[1];
 	                count++;
 	            }
-	            // If this cell is first time to reach or the distance to this cell is shorter
-	            // add it to queue and update distance
+	          
 	            if(distance[x][y]==-1||distance[x][y]>count){
 	                q.add(new int[]{x,y});
 	                distance[x][y]=count;
