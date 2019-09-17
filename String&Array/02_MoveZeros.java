@@ -1,5 +1,12 @@
 package top50;
-
+/*
+ * Time Complexity: O(n)
+ * 데이타  int[] nums = {0,3, 2, 0, 8, 5};
+ * 를 for문으로 모두 순회해야되니까
+ * Space Complexity : O(1). 
+ * 주어진 문제에서 int currentIndex = 0;
+ * 상수는 하나만 사용했으니까
+ */
 public class MoveZeros {
 
 	public static void main(String args[]) {
