@@ -2,7 +2,11 @@ package top50;
 
 import java.util.Arrays;
 import java.util.Comparator;
-
+/*
+* Arrays.sort() 
+* time complexity of O(n logn n) 
+* space complexity of O(1).
+*/
 
 
 class Interval{
