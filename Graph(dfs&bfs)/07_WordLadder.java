@@ -59,7 +59,7 @@ public class WordLadder {
 	}
 }
 
-//2. 끝까지 최선님 의견에 따라서 wordList에 한번 걸친 값은 삭제하면서 찾으면 더 빠르게 찾을 수 있어서 소스를 아래로 수정합니다.
+//2. 끝까지 최선님 의견에 따라서 wordList에 한번 사용한 값은 삭제하면서 찾으면 더 빠르게 찾을 수 있어서 소스를 아래로 수정합니다.
 // 1. for (String neighbor : neighbors(str, dict)) { //1 호출시 set으로 호출
 // 2. public List<String> neighbors(String s, List<String> wordList) 함수의 두번째 파라미터를  Set으로 변경
 //   -> public List<String> neighbors(String s, Set<String> dict) 
