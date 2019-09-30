@@ -1,10 +1,7 @@
 package zTest;
 
 public class NumberOfIsland_dfs {
-
-
 	public static void main(String[] args) {
-
 		char[][] grid= {
 						{'1','1','0','0','0'},
 						{'1','1','0','0','0'},
@@ -37,8 +34,6 @@ public class NumberOfIsland_dfs {
 		System.out.println("==merge=====i: "+i+" y: "+j);
 		if(i<0 || i>=m || j<0||j>=n || grid[i][j]!='1') return ;
 		grid[i][j]='X';
-		
-		
 //		for(int[] dir: dirs) {
 //			merge(grid, i+dir[0], j+dir[1]);
 //		}
