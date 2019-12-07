@@ -36,10 +36,12 @@ public class MeetingRoom2 {
 		
 		for(int i=1; i<intervals.length; i++) {
 			Interval interval = heap.poll();
-			if(intervals[i].start  < interval.end) {
+			if( interval.end <= intervals[i].start  ) {
+				interval.end = intervals[i].end;
+			}else {
 				heap.offer(intervals[i]);
 			}
-			heap.offer(interval);
+			 heap.offer(interval);
 		}
 		return heap.size();
 		
