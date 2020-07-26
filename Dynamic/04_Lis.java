@@ -9,7 +9,6 @@ public class Lis {
 		
 		Lis a = new Lis();
 		int[] nums = {1,2,3, 2, 5, 2, 6, 10, 4, 12}; 
-//		int[] nums = {10,9,2,5,3,7,101,18};
 
 		System.out.println("value "+ a.solve(nums));
 	}
