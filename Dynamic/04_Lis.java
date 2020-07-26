@@ -8,7 +8,7 @@ public class Lis {
 	public static void main(String[] args) {
 		
 		Lis a = new Lis();
-		int[] nums = {10,9,2,5,3,7,101,18};
+		int[] nums = {1,2,3, 2, 5, 2, 6, 10, 4, 12}; 
 		System.out.println(a.solve(nums));
 	}
     public int solve(int[] nums) {
