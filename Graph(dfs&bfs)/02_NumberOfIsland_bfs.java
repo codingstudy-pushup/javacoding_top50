@@ -39,9 +39,9 @@ public class NumberOfIsland_bfs {
 		Queue<int[]> queue = new LinkedList<>();
 		queue.offer(new int[] {x,y});
 		while(!queue.isEmpty()) {
-			int size = queue.size();
+			//int size = queue.size();  //사이즈로 돌리는거 불필요함, 밑에 poll()에서 빼서 쓰면됨
 			int[] p = queue.poll();
-			for( int i=0; i<size; i++) {
+			//for( int i=0; i<size; i++) {//사이즈로 돌리는거 불필요
 				for(int[] dir :dirs) {
 					int dx = p[0]+dir[0];
 					int dy = p[1]+dir[1];
@@ -50,7 +50,7 @@ public class NumberOfIsland_bfs {
 						queue.offer(new int[] {dx, dy});
 					}
 				}
-			}
+			//}
 		}
 		
 	}
