@@ -30,6 +30,7 @@ public class WordSearch {
 	}
 	private boolean dfs(char[][] grid, boolean[][] visited, int x, int y ,int start, String word) {
 		//1
+// 		print(visited); 
 		if(start == word.length()) return true;
 		if(x<0||x>=m || y<0||y>=n) return false; // x30 m:4 
 		if(visited[x][y]) return false;
@@ -47,4 +48,16 @@ public class WordSearch {
 		return false;
 		
 	}
+	
+	 private void print(boolean[][] visited) {
+	    	if(visited==null|| visited.length==0)return;
+
+	    	int m=visited.length,n=visited[0].length;
+	    	for(int i=0; i<m; i++) {
+	    		for(int j=0; j<n; j++) {
+	    			System.out.print(visited[i][j]+"\t");
+	    		}
+	    		System.out.println();
+	    	}
+	    }
 }
