@@ -26,7 +26,26 @@ public class MeetingRoom2 {
 		Interval[] intervals = {in1,in2,in3};
 		System.out.println(a.solve(intervals));
 	}
-	public int solve(Interval[] intervals) {
+	
+	
+	public int solve1(Interval[] intervals) {
+		Arrays.sort(intervals, (Interval a, Interval b) -> a.start - b.start);
+		Queue<Interval> pq = new PriorityQueue<>((Interval a, Interval b) -> a.end - b.end);
+		pq.add(intervals[0]);
+
+		for (int i = 1; i < intervals.length; i++) {
+        	System.out.println("pq.peek(): "+pq.peek().end+" intervals[i].start "+intervals[i].start);
+			if (pq.peek().end <= intervals[i].start) {
+				pq.poll();
+			}
+			pq.add(intervals[i]);
+		}
+
+		return pq.size();
+	}
+	
+	
+	public int solve2(Interval[] intervals) {
 		if(intervals == null || intervals.length==0)
 			return 0;
 		Arrays.sort(intervals, Comp);
