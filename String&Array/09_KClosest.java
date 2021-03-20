@@ -1,57 +1,66 @@
-package p2;
+package top50;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
-public class G119_KClosest {
+public class KClosest {
 
 	public static void main(String[] args) {
-		List<List<Integer>> list = new ArrayList<List<Integer>>();
-		
-		List<Integer> intList = new ArrayList<>();
-		List<Integer> intList2 = new ArrayList<>();
-		intList.add(1); intList.add(3);
-		intList2.add(-2); intList2.add(2);
-		list.add(intList);
-		list.add(intList2);
-		
-		System.out.println(kClosest(list, 1));
+		KClosest a = new KClosest();
+		int[][] points = { { 1, 3 }, { -2, 2 } };
+		System.out.println("=");
+		a.print(points);
+		int k = 1;
+//		int[][] points = {{3,3},{5,-1},{-2,4}};
+//		int k =2;
+		System.out.println("===result==");
+		int[][] result = a.solve(points, k);
+		a.print(result);
 	}
-	
-	public static int[][] convert(List<List<Integer>> list) {
-		int[][] array = new int[list.size()][];
-		for (int i = 0; i < array.length; i++) {
-			array[i] = new int[list.get(i).size()];
+
+	//
+	public int[][] solve(int[][] points, int k) {
+//		Queue<int[]> queue = new PriorityQueue<>(points.length, Comp);
+		Queue<int[]> queue = new PriorityQueue<>((a, b) -> (a[0] * a[0] + a[1] + a[1]) - (b[0] * b[0] + b[1] * b[1]));
+		int[][] result = new int[k][2];
+		int index = 0;
+
+		for (int[] p : points) {
+			queue.offer(p);
 		}
-		for(int i=0; i<list.size(); i++){
-			for (int j = 0; j < list.get(i).size(); j++) {
-				array[i][j] = list.get(i).get(j);
+		while (index < k) {
+			result[index] = queue.poll();
+			index++;
+		}
+		return result;
+
+	}
+
+	Comparator<int[]> Comp = new Comparator<int[]>() {
+
+		@Override
+		public int compare(int[] a, int[] b) {
+			// TODO Auto-generated method stub
+			return (a[0] * a[0] + a[1] + a[1]) - (b[0] * b[0] + b[1] * b[1]);
+		}
+
+	};
+
+	/*참고
+	 * Time: O(NlogN)
+	 */
+	public int[][] solve_2(int[][] points, int K) {
+		Arrays.sort(points, (a, b) -> a[0] * a[0] + a[1] * a[1] - b[0] * b[0] - b[1] * b[1]);
+		return Arrays.copyOfRange(points, 0, K);
+	}
+
+	public void print(int[][] result) {
+		int m = result.length;
+		int n = result[0].length;
+		for (int i = 0; i < result.length; i++) {
+			for (int j = 0; j < result[i].length; j++) {
+				System.out.print(" [" + i + "][" + j + "] " + result[i][j]);
 			}
+			System.out.println();
 		}
-		return array;
 	}
-	
-	public static int[][] kClosest(List<List<Integer>> list, int K) {
-		
-		int[][] points = convert(list);
-        int N = points.length;
-        int[] dists = new int[N];
-        for (int i = 0; i < N; ++i)
-            dists[i] = dist(points[i]);
-
-        Arrays.sort(dists);
-        int distK = dists[K-1];
-
-        int[][] ans = new int[K][2];
-        int t = 0;
-        for (int i = 0; i < N; ++i)
-            if (dist(points[i]) <= distK)
-                ans[t++] = points[i];
-        return ans;
-    }
-
-    public static int dist(int[] point) {
-        return point[0] * point[0] + point[1] * point[1];
-    }
 }
