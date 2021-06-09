@@ -16,11 +16,11 @@ public class Maze1_dfs {
 //		int[] dest = {3,2};
 		
 	Maze1_dfs a= new Maze1_dfs();
-	System.out.println(a.hasPath(maze, start,dest ));
+	System.out.println(a.solve(maze, start,dest ));
 }
 	int[][] dirs= {{-1,0},{1,0},{0,-1},{0,1}};
 	int m, n;
-	public boolean hasPath(int[][] maze, int[] start, int [] dest) {
+	public boolean solve(int[][] maze, int[] start, int [] dest) {
 		if(maze==null|| maze.length==0)
 			return false;
 		m = maze.length;//5
