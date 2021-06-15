@@ -10,11 +10,11 @@ public class UniqueEamilAddress {
 				"test.email+james@coding.com", 
 				"test.e.mail+toto.jane@cod.ing.com",
 				"testemail+tom@cod.ing.com" };
-		System.out.println(a.numUniqueEmails(emails));
-		System.out.println(a.numUniqueEmails2(emails));
+		System.out.println(a.solve_1(emails));
+		System.out.println(a.solve_split(emails));
 
 	}
-	//1
+	//1.Basic
 	public int solve_1(String[] emails) {
 		// 1
 		Set<String> set = new HashSet<>();
@@ -42,7 +42,6 @@ public class UniqueEamilAddress {
 			if (email.charAt(i) == '@') {
 				break;
 			}
-
 			// 2
 			String str = String.valueOf(email.charAt(i));
 			sb.append(str);
@@ -68,25 +67,23 @@ public class UniqueEamilAddress {
 //			set.add(tmpLocal + tmpDomain);
 //		}
 		for (int i = 0; i < emails.length; i++) {
-			String tmpLocal = "";
-			String tmpDomain = "";
-			tmpLocal = emails[i].substring(0, emails[i].indexOf("+")).replace(".", "");
-			tmpDomain = emails[i].substring(emails[i].indexOf("@"));
-			set.add(tmpLocal + tmpDomain);
+			String localName = "";
+			String domainName = "";
+			localName = emails[i].substring(0, emails[i].indexOf("+")).replace(".", "");
+			domainName = emails[i].substring(emails[i].indexOf("@"));
+			set.add(localName + domainName);
 		}
-
 		result = set.size();
-
 		return result;
 
 	}
-// 3 replace
-	public int solve_replace(String[] emails) {
+// 3 split
+	public int solve_split(String[] emails) {
 		Set<String> set = new HashSet<>(); 
 		for (String email : emails) {
 			String[] parts = email.split("@"); 
-			String[] local = parts[0].split("\\+"); 
-			set.add(local[0].replace(".", "") + "@" + parts[1]); 														// domain.
+			String[] localName = parts[0].split("\\+"); 
+			set.add(localName[0].replace(".", "") + "@" + parts[1]); 														// domain.
 		}
 		return set.size();
 	}
