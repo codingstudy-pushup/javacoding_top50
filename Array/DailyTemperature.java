@@ -7,21 +7,50 @@ public class DailyTemperature {
 
 	public static void main(String[] args) {
 		int[] nums = { 73, 74, 75, 71, 69, 72, 76, 73 };
+//		int[] res = solve_0(nums);
 		int[] res = solve_1(nums);
+
 		System.out.println("====result===");
 		for (int i : res) {
 			System.out.print(i + " ");
 		}
 	}
-//1. basic
+
+//1. for 2
 	public static int[] solve_1(int[] tem) {
+		int count = 0, j;
+		int len = tem.length;
+		int[] result = new int[len];
+
+		for (int i = 0; i < len; i++) {
+			for (j = i + 1; j < len - 1; j++) {
+				System.out.println("i " + i + " j " + j);
+				if (tem[i] < tem[j]) {
+					count++;
+					break;
+				} else
+					count++;
+			}
+
+			if (j == tem.length)
+				result[i] = 0;
+			else
+				result[i] = count;
+			count = 0;
+		}
+
+		return result;
+	}
+
+//2 for, while
+	public static int[] solve_2(int[] tem) {
 		int len = tem.length;
 		int[] result = new int[len];
 		int max = 0;
 
 		for (int i = 0; i < len; i++) {
 			max = i;
-			System.out.println("max "+max);
+			System.out.println("max " + max);
 			while (max <= len - 1 && tem[i] >= tem[max]) {
 				max++;
 			}
@@ -32,7 +61,8 @@ public class DailyTemperature {
 		}
 		return result;
 	}
-//2. stack
+
+//3 stack
 	public static int[] solve_stack(int[] temper) {
 		// 1. ds
 		Stack<Integer> stack = new Stack<>();
@@ -51,30 +81,6 @@ public class DailyTemperature {
 		}
 		return result;
 
-	}
-//for문 2개
-	public static int[] solve_2(int[] tem) {
-		int count = 0, j;
-		int len = tem.length;
-		int[] result = new int[len];
-
-		for (int i = 0; i < len - 1; i++) {
-			for (j = i + 1; j < len; j++) {
-				if (tem[i] < tem[j]) {
-					count++;
-					break;
-				} else
-					count++;
-			}
-
-			if (j == tem.length)
-				result[i] = 0;
-			else
-				result[i] = count;
-			count = 0;
-		}
-
-		return result;
 	}
 
 }
