@@ -13,7 +13,7 @@ public class DailyTemperature {
 			System.out.print(i + " ");
 		}
 	}
-
+//1. basic
 	public static int[] solve_1(int[] tem) {
 		int len = tem.length;
 		int[] result = new int[len];
@@ -32,7 +32,7 @@ public class DailyTemperature {
 		}
 		return result;
 	}
-
+//2. stack
 	public static int[] solve_stack(int[] temper) {
 		// 1. ds
 		Stack<Integer> stack = new Stack<>();
@@ -52,7 +52,7 @@ public class DailyTemperature {
 		return result;
 
 	}
-
+//for문 2개
 	public static int[] solve_2(int[] tem) {
 		int count = 0, j;
 		int len = tem.length;
