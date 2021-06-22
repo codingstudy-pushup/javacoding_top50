@@ -9,12 +9,24 @@ public class TwoSum {
 		TwoSum a = new TwoSum();
 		int[] nums = { 2, 8, 11, 14 };
 		int target = 16;
-		int[] result = a.solve(nums, target);
+		int[] result = a.solve_for(nums, target);
 		for (int i : result) {
 			System.out.print(i + " ");
 		}
 	}
-
+	//O(n^2)
+	public int[] solve_for(int[] nums, int target) {
+		int len = nums.length;
+	    for (int i = 0; i < len; i++) {
+	        for (int j = i + 1; j < len; j++) {
+	            if (nums[j] == target - nums[i]) {
+	                return new int[] { i, j };
+	            }
+	        }
+	    }
+	    throw new IllegalArgumentException("Nothing");
+	}
+	//O(n)
 	public int[] solve(int[] nums, int target) {
 		// 1. ds 담을 그릇
 		int[] result = new int[2];
