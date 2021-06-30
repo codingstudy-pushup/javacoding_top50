@@ -6,30 +6,32 @@ public class LongestSubMostTwoDistinct {
 
 	public static void main(String[] args) {
 		String s = "ccaabbb";
-		System.out.println(solve2(s));
+		System.out.println(solve_map(s));
 	}
 
-	public static int solve(String s) {
+	public static int solve_map(String s) {
 		// 1
-		int left = 0, right = 0, max = 0, counter = 0;
 		Map<Character, Integer> map = new HashMap<>();
+		int l = 0, r = 0, max = 0, counter = 0;
 
 		// 2
-		while (right < s.length()) {
-			char rightChar = s.charAt(right);
-			map.put(rightChar, map.getOrDefault(rightChar, 0) + 1);// c=2, a=2, b=3
-			if (map.get(rightChar) == 1)
+		while (r < s.length()) {
+			char c = s.charAt(r);
+//			System.out.println("c: " + c);
+			map.put(c, map.getOrDefault(c, 0) + 1);// c=2, a=2, b=3
+			if (map.get(c) == 1)
 				counter++;
-			right++;
+			r++;
 			// 3
 			while (counter > 2) {
-				char leftChar = s.charAt(left);
-				map.put(leftChar, map.get(leftChar) - 1);
-				if (map.get(leftChar) == 0)
+				char c2 = s.charAt(l);
+				map.put(c2, map.get(c2) - 1);
+				if (map.get(c2) == 0)
 					counter--;
-				left++;
+				l++;
 			}
-			max = Math.max(max, right - left);
+			max = Math.max(max, r - l);
+			System.out.println("right " + r + " - left " + l + " :" + (r - l));
 		}
 		return max;
 	}
@@ -39,14 +41,15 @@ public class LongestSubMostTwoDistinct {
 		int left = 0, right = 0, maxLen = 0, counter = 0;
 
 		while (right < s.length()) {
-			final char c1 = s.charAt(right);
+			char c1 = s.charAt(right);
+
 			if (map[c1] == 0)
 				counter++;
 			map[c1]++;
 			right++;
 
 			while (counter > 2) {
-				final char c2 = s.charAt(left);
+				char c2 = s.charAt(left);
 				if (map[c2] == 1)
 					counter--;
 				map[c2]--;
