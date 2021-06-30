@@ -5,8 +5,6 @@ import java.util.*;
 public class FindAllAnagramInAString {
 	public static void main(String args[]) {
 		FindAllAnagramInAString a = new FindAllAnagramInAString();
-//		String s = "BACDGABCDA";
-//		String trg = "ABCD";
 		String s = "bacdgabcda";
 		String p = "abcd";
 		System.out.println(a.solve_array(s, p));
