@@ -17,28 +17,32 @@ public class DailyTemperature {
 	}
 
 //1. for 2
-	public static int[] solve_1(int[] tem) {
-		int count = 0, j;
+      public static int[] solve_1(int[] tem) {
+		// 1.ds
 		int len = tem.length;
-		int[] result = new int[len];
+		int[] result = new int[len];// 8
+		int count = 0, j;
 
+		// 2.for
 		for (int i = 0; i < len; i++) {
-			for (j = i + 1; j < len - 1; j++) {
-				System.out.println("i " + i + " j " + j);
+			for (j = i + 1; j < len ; j++) {
+				System.out.println("i:"+i+" j:"+j);
+				System.out.println("tem["+i+"] "+tem[i]+" tem["+j+"]"+tem[j]);
 				if (tem[i] < tem[j]) {
 					count++;
 					break;
-				} else
+				} else {
 					count++;
+				}
 			}
-
-			if (j == tem.length)
+			if (j == tem.length) {
+				System.out.println("=======j "+j+" length "+tem.length);
 				result[i] = 0;
-			else
+			}else {
 				result[i] = count;
+			}
 			count = 0;
 		}
-
 		return result;
 	}
 
