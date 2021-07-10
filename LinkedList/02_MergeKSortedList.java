@@ -1,11 +1,23 @@
-package top50;
+package LinkedList;
 
 import java.util.Comparator;
 import java.util.PriorityQueue;
+import java.util.Queue;
+
+class ListNode {
+	int val;
+	ListNode next;
+
+	ListNode(int x) {
+		this.val = x;
+	}
+}
 
 public class MergeKSortedList {
 
 	public static void main(String[] args) {
+		MergeKSortedList a = new MergeKSortedList();
+
 		ListNode l1 = new ListNode(1);
 		l1.next = new ListNode(4);
 		l1.next.next = new ListNode(5);
@@ -21,46 +33,56 @@ public class MergeKSortedList {
 		list[0] = l1;
 		list[1] = l2;
 		list[2] = l3;
-		MergeKSortedList a = new MergeKSortedList();
-		ListNode result = a.mergeKLists(list);
-		System.out.println("====");
-		while(result !=null) {
-			System.out.println(result.val);
-			result= result.next;
-		}
+		ListNode result = a.solve(list);
+		a.print(result);
 	}
+	public ListNode solve(ListNode[] lists) {
+		
+		//1. 자바 8
+	     Queue<ListNode> queue= new PriorityQueue<ListNode>
+	     (lists.length, (a,b)-> a.val-b.val);
+	     
+	 	// 2
+//			Queue<ListNode> queue = new PriorityQueue<ListNode>(Comp);
+			
+		// 3
+//			Queue<ListNode> queue = new PriorityQueue<ListNode>(new Comparator <ListNode>() {
+//				public int compare(ListNode l1, ListNode l2) {
+//					return l1.val -l2.val;
+//				}
+//			});
+	
 
-	public ListNode mergeKLists(ListNode[] lists) {
-		// 1
-		PriorityQueue<ListNode> queue = new PriorityQueue<ListNode>(Comp);
-		ListNode newHead = new ListNode(0);
-		ListNode p = newHead;
-		for (ListNode node : lists) {
-			if (node != null)
-				queue.offer(node);
+		ListNode head = new ListNode(0);
+		ListNode p = head;
+
+		for (ListNode list : lists) {
+			if (list != null)
+				queue.offer(list);
 		}
 
-		// 2
 		while (!queue.isEmpty()) {
-			ListNode node = queue.poll();
-			System.out.print(""+node.val+"\t");
-			p.next = node;
+			ListNode n = queue.poll();
+			System.out.println("poll " + n.val);
+			p.next = n;
 			p = p.next;
-			if (node.next != null)
-				queue.offer(node.next);
+			if (n.next != null)
+				queue.offer(n.next);
 		}
-		return newHead.next;
-
+		return head.next;
 	}
 
 	Comparator<ListNode> Comp = new Comparator<ListNode>() {
-
-		@Override
 		public int compare(ListNode a, ListNode b) {
-			// TODO Auto-generated method stub
 			return a.val - b.val;
 		}
-
 	};
+	private void print(ListNode node) {
+		while(node != null) {
+			System.out.println(node.val);
+			node = node.next;
+		}
+			
+	}
 
 }
