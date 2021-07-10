@@ -62,7 +62,7 @@ public class MergeKSortedList {
 	
 
 		ListNode head = new ListNode(0);
-		ListNode p = head;
+		ListNode res = head;
 
 		for (ListNode list : lists) {
 			if (list != null)
@@ -72,8 +72,8 @@ public class MergeKSortedList {
 		while (!queue.isEmpty()) {
 			ListNode n = queue.poll();
 			System.out.println("poll " + n.val);
-			p.next = n;
-			p = p.next;
+			res.next = n;
+			res = res.next;
 			if (n.next != null)
 				queue.offer(n.next);
 		}
