@@ -36,21 +36,29 @@ public class MergeKSortedList {
 		ListNode result = a.solve(list);
 		a.print(result);
 	}
+	private void print(ListNode node) {
+		while(node != null) {
+			System.out.println(node.val);
+			 node = node.next;
+		}
+			
+	}
+
+
 	public ListNode solve(ListNode[] lists) {
 		
 		//1. 자바 8
-	     Queue<ListNode> queue= new PriorityQueue<ListNode>
-	     (lists.length, (a,b)-> a.val-b.val);
+//	     Queue<ListNode> queue= new PriorityQueue<>((a,b)-> a.val-b.val);
 	     
 	 	// 2
-//			Queue<ListNode> queue = new PriorityQueue<ListNode>(Comp);
+//			Queue<ListNode> queue = new PriorityQueue<>(Comp);
 			
 		// 3
-//			Queue<ListNode> queue = new PriorityQueue<ListNode>(new Comparator <ListNode>() {
-//				public int compare(ListNode l1, ListNode l2) {
-//					return l1.val -l2.val;
-//				}
-//			});
+			Queue<ListNode> queue = new PriorityQueue<>(new Comparator <>() {
+				public int compare(ListNode l1, ListNode l2) {
+					return l1.val -l2.val;
+				}
+			});
 	
 
 		ListNode head = new ListNode(0);
@@ -77,12 +85,5 @@ public class MergeKSortedList {
 			return a.val - b.val;
 		}
 	};
-	private void print(ListNode node) {
-		while(node != null) {
-			System.out.println(node.val);
-			node = node.next;
-		}
-			
-	}
 
 }
